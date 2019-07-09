@@ -3,3 +3,13 @@ body,html {
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
 }
+
+.jc-center {
+  justify-content: center;
+}
+
+.container {
+  margin-top: 80px;
+  display: flex;
+  max-width: 1200px;
+}
