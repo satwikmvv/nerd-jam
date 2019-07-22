@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import withStyles from '@material-ui/core/styles/withStyles'
 import PropTypes from 'prop-types'
 import AppIcon from '../images/icon.png';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 
 //MUI
@@ -57,7 +56,15 @@ class login extends Component {
             errors: {}
         }
 
-        console.log(this)
+        // console.log(this)
+    }
+
+    componentWillReceiveProps(nextProps){
+        if(nextProps.UI.errors) {
+            this.setState({
+                errors: nextProps.UI.errors
+            })
+        }
     }
 
     handleSubmit = (event) => {
@@ -96,6 +103,11 @@ class login extends Component {
                         {errors.error && (
                             <Typography variant="body2" className={classes.customError}>
                                 {errors.error}
+                            </Typography>
+                        )}
+                        {errors.general && (
+                            <Typography variant="body2" className={classes.customError}>
+                                {errors.general}
                             </Typography>
                         )}
                         
