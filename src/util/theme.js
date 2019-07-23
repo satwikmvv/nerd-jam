@@ -4,13 +4,13 @@ export default {
         light: '#7c42bd',
         main: '#4a138c',
         dark: '#12005e',
-        contrastText: '#fff',
+        contrastText: '#fff'
       },
       secondary: {
-        light: '#ff7961',
-        main: '#f44336',
-        dark: '#ba000d',
-        contrastText: '#000',
+        light: '#ffd149',
+        main: '#ffa000',
+        dark: '#c67100',
+        contrastText: '#000'
       },
     },
     typography: {
