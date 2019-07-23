@@ -124,7 +124,7 @@ class EditDetails extends Component {
                         <Button onClick={this.handleClose} color="secondary">
                             Cancel
                         </Button>
-                        <Button onClick={this.handleSubmit} color="primary">
+                        <Button variant="contained" onClick={this.handleSubmit} color="primary">
                             Save
                         </Button>
                     </DialogActions>

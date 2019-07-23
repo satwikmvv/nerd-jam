@@ -3,24 +3,19 @@ import Grid from '@material-ui/core/Grid';
 import axios from 'axios';
 import Yap from '../components/Yap';
 import Profile from '../components/Profile';
+import PropTypes from 'prop-types';
+
+import { connect } from 'react-redux';
+import { getYaps } from '../redux/actions/dataActions';
 export class home extends Component {
-    state = {
-        yaps: null
-    }
 
     componentDidMount() {
-        axios.get('/yaps')
-        .then(res => {
-            console.log(res)
-            this.setState({
-                yaps: res.data
-            })
-        })
-        .catch(err => console.log(err))
+        this.props.getYaps()
     }
     render() {
-        let recentYapMarkup = this.state.yaps ? (
-            this.state.yaps.map(yap => <Yap key={yap.yapId} yap={yap} />)
+        const { yaps, loading } = this.props.data;
+        let recentYapMarkup = !loading ? (
+            yaps.map(yap => <Yap key={yap.yapId} yap={yap} />)
         ) : <p>Loading...</p>
         return (
             <Grid container justify="center" spacing={2}>
@@ -35,4 +30,13 @@ export class home extends Component {
     }
 }
 
-export default home
+home.propTypes = {
+    getYaps: PropTypes.func.isRequired,
+    data: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => ({
+    data: state.data
+})
+
+export default connect(mapStateToProps, { getYaps })(home)

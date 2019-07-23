@@ -1,4 +1,4 @@
-import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER } from '../types';
+import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_YAP, UNLIKE_YAP } from '../types';
 
 const initialState = {
     authenticated: false,
@@ -23,6 +23,22 @@ export default function(state = initialState, action){
                 loading: false,
                 ...action.payload
             };
+        case LIKE_YAP:
+            return {
+                ...state,
+                likes: [
+                    ...state.likes,
+                    {
+                        userHandle: state.credentials.handle,
+                        yapId: action.payload.yapId
+                    }
+                ]
+            }
+        case UNLIKE_YAP:
+            return {
+                ...state,
+                likes: state.likes.filter(like => like.yapId !== action.payload.yapId)
+            }
         case LOADING_USER:
             return {
                 ...state,
