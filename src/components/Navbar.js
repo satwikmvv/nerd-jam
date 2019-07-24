@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MyButton from '../util/MyButton';
+import PostYap from './PostYap';
 
 //Redux
 import { connect } from 'react-redux';
@@ -26,9 +27,7 @@ export class Navbar extends Component {
                 <Toolbar className="nav-container">
                     {authenticated ? (
                         <Fragment>
-                            <MyButton tip="Post a Yap!">
-                                <AddIcon color="secondary" />
-                            </MyButton>
+                            <PostYap />
                             <Link to='/'>
                                 <MyButton tip="Home">
                                     <HomeIcon color="secondary" />

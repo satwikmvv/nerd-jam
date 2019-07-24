@@ -1,4 +1,4 @@
-import { SET_YAPS, LIKE_YAP, UNLIKE_YAP, LOADING_DATA, DELETE_YAP } from '../types';
+import { SET_YAPS, POST_YAP, LIKE_YAP, UNLIKE_YAP, LOADING_DATA, DELETE_YAP } from '../types';
 
 const initialState = {
     yaps: [],
@@ -18,6 +18,14 @@ export default function(state = initialState, action) {
                 ...state,
                 yaps: action.payload,
                 loading: false
+            }
+        case POST_YAP:
+            return {
+                ...state,
+                yaps: [
+                    action.payload,
+                    ...state.yaps
+                ]
             }
         case LIKE_YAP:
         case UNLIKE_YAP:

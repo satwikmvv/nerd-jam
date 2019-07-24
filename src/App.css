@@ -21,3 +21,13 @@ body,html {
 a {
   text-decoration: none
 }
+
+.MuiFormHelperText-root {
+  position: absolute !important;
+  bottom: 0 !important;
+}
+
+.MuiTextField-root {
+  position: relative !important;
+  padding: 0px 0px 20px 0px !important;
+}
