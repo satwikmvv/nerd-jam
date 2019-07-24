@@ -1,4 +1,4 @@
-import { SET_YAPS, LOADING_DATA, LIKE_YAP, UNLIKE_YAP } from '../types';
+import { SET_YAPS, LOADING_DATA, LIKE_YAP, UNLIKE_YAP, DELETE_YAP } from '../types';
 import axios from 'axios';
 
 //get all yaps
@@ -41,4 +41,15 @@ export const unlikeYap = (yapId) => (dispatch) => {
         })
     })
     .catch(err => console.log(err))
+}
+
+export const deleteYap = (yapId) => (dispatch) => {
+    axios.delete(`/yap/${yapId}`)
+    .then(() => {
+        dispatch({ 
+            type: DELETE_YAP,
+            payload: yapId  
+        })
+    })
+    .catch(err=>console.log(err))
 }

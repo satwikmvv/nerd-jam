@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime'
 import PropTypes from 'prop-types';
 import MyButton from '../util/MyButton';
+import DeleteYap from './DeleteYap'
 
 //MUI
 import Card from '@material-ui/core/Card';
@@ -25,6 +26,7 @@ import { likeYap, unlikeYap } from '../redux/actions/dataActions'
 
 const styles = {
     card: {
+        position: 'relative',
         display: 'flex',
         marginBottom:20
     },
@@ -55,7 +57,7 @@ export class Yap extends Component {
         dayjs.extend(relativeTime);
 
         //const classes = this.props.classes;
-        const { classes, user: { authenticated }, yap: {body, commentCount, likeCount, userHandle, userImage, yapId, createdAt} } = this.props; //destructuring
+        const { classes, user: { authenticated, credentials: { handle } }, yap: {body, commentCount, likeCount, userHandle, userImage, yapId, createdAt} } = this.props; //destructuring
         
         const likeButton = !authenticated ? (
             <MyButton tip="Like">
@@ -74,6 +76,10 @@ export class Yap extends Component {
                 </MyButton>
             )
         )
+
+        const deleteButton = authenticated && userHandle === handle ? (
+            <DeleteYap yapId={yapId} />
+        ) : null
         return (
             <Card className={classes.card}> 
                 <CardMedia 
@@ -83,6 +89,7 @@ export class Yap extends Component {
                 />
                 <CardContent className={classes.content}>
                     <Typography variant="h5" color="primary" component={Link} to={`/users/${userHandle}`}>{userHandle}</Typography>
+                    {deleteButton}
                     <Typography variant="body2" color="textSecondary">{dayjs(createdAt).fromNow()}</Typography>
                     <Typography variant="body1" >{body}</Typography>
                     {likeButton}

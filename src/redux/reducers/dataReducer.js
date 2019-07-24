@@ -1,4 +1,4 @@
-import { SET_YAPS, LIKE_YAP, UNLIKE_YAP, LOADING_DATA } from '../types';
+import { SET_YAPS, LIKE_YAP, UNLIKE_YAP, LOADING_DATA, DELETE_YAP } from '../types';
 
 const initialState = {
     yaps: [],
@@ -26,7 +26,12 @@ export default function(state = initialState, action) {
             return {
                 ...state
             }
-
+        case DELETE_YAP:
+            let delIndex = state.yaps.findIndex(yap => yap.yapId === action.payload);
+            state.yaps.splice(delIndex,1);
+            return {
+                ...state
+            }
         default:
             return state
     }
