@@ -1,4 +1,4 @@
-import { SET_YAPS, LOADING_DATA, POST_YAP, LIKE_YAP, UNLIKE_YAP, DELETE_YAP, LOADING_UI, SET_ERRORS, CLEAR_ERRORS } from '../types';
+import { SET_YAPS, LOADING_DATA, POST_YAP, LIKE_YAP, UNLIKE_YAP, DELETE_YAP, STOP_LOADING_UI, LOADING_UI, SET_ERRORS, CLEAR_ERRORS, SET_YAP } from '../types';
 import axios from 'axios';
 
 //get all yaps
@@ -19,6 +19,18 @@ export const getYaps = () => (dispatch) => {
     })
 }
 
+export const getYap = (yapId) => (dispatch) => {
+    dispatch({ type: LOADING_UI });
+    axios.get(`/yap/${yapId}`)
+    .then(res => {
+        dispatch({
+            type: SET_YAP,
+            payload: res.data
+        });
+        dispatch({ type: STOP_LOADING_UI })
+    })
+    .catch(err => console.log(err))
+}
 //Post a yap
 export const postYap = (newYap) => (dispatch) => {
     dispatch({ type: LOADING_UI });

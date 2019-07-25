@@ -5,7 +5,8 @@ import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime'
 import PropTypes from 'prop-types';
 import MyButton from '../util/MyButton';
-import DeleteYap from './DeleteYap'
+import DeleteYap from './DeleteYap';
+import YapDialog from './YapDialog';
 
 //MUI
 import Card from '@material-ui/core/Card';
@@ -98,7 +99,7 @@ export class Yap extends Component {
                         <ChatIcon color="primary"/>
                     </MyButton>
                     <span>{commentCount} Comments</span>
-
+                    <YapDialog yapId={yapId} userHandle={userHandle}/>
                 </CardContent>
             </Card>
         )
