@@ -19,3 +19,16 @@ import CloseIcon from '@material-ui/icons/Close'
 //Redux
 import { connect } from 'react-redux';
 import { postYap, clearErrors } from '../redux/actions/dataActions';
+
+
+export class YapDialog extends Component {
+    render() {
+        return (
+            <div>
+                
+            </div>
+        )
+    }
+}
+
+export default YapDialog
