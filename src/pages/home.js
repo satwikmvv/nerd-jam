@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import axios from 'axios';
 import Yap from '../components/Yap';
 import Profile from '../components/Profile';
 import PropTypes from 'prop-types';

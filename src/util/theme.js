@@ -15,5 +15,45 @@ export default {
     },
     typography: {
       useNextVariants: true
+    },
+    customStyles: {
+      //Yap Dialog
+      invisibleSeparator : {
+        border: 'none',
+        margin: 4
+      },
+      profileImage: {
+        maxWidth: 200,
+        height: 200,
+        borderRadius: '50%',
+        objectFit: 'cover'
+      },
+      closeButton: {
+        position: 'absolute',
+        left: '90%'
+      },
+      expandButton: {
+        position: 'absolute',
+        left: '90%'
+      },
+      spinnerDiv: {
+        textAlign: 'center',
+        marginTop: 50,
+        marginBottom: 50
+      },
+      //Yap
+      card: {
+        position: 'relative',
+        display: 'flex',
+        marginBottom:20
+      },
+      image:{
+        minWidth:200,
+        objectFit: 'cover'
+      },
+      content: {
+        padding:25,
+        objectFit: 'cover'
+      }
     }
   }

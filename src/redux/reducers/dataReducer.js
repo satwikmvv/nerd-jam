@@ -1,4 +1,4 @@
-import { SET_YAPS, POST_YAP, LIKE_YAP, UNLIKE_YAP, LOADING_DATA, DELETE_YAP } from '../types';
+import { SET_YAPS, SET_YAP, POST_YAP, LIKE_YAP, UNLIKE_YAP, LOADING_DATA, DELETE_YAP } from '../types';
 
 const initialState = {
     yaps: [],
@@ -19,6 +19,11 @@ export default function(state = initialState, action) {
                 yaps: action.payload,
                 loading: false
             }
+        case SET_YAP:
+            return {
+                ...state,
+                yap: action.payload
+            }
         case POST_YAP:
             return {
                 ...state,
@@ -31,6 +36,9 @@ export default function(state = initialState, action) {
         case UNLIKE_YAP:
             let index = state.yaps.findIndex((yap) => yap.yapId === action.payload.yapId);
             state.yaps[index] = action.payload;
+            if (state.yap.yapId === action.payload.yapId){
+                state.yap = action.payload
+            }
             return {
                 ...state
             }
