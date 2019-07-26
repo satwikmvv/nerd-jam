@@ -1,4 +1,4 @@
-import { SET_YAPS, LOADING_DATA, POST_YAP, LIKE_YAP, UNLIKE_YAP, DELETE_YAP, STOP_LOADING_UI, LOADING_UI, SET_ERRORS, CLEAR_ERRORS, SET_YAP } from '../types';
+import { SET_YAPS, LOADING_DATA, POST_YAP, LIKE_YAP, UNLIKE_YAP, DELETE_YAP, SUBMIT_COMMENT, STOP_LOADING_UI, LOADING_UI, SET_ERRORS, CLEAR_ERRORS, SET_YAP } from '../types';
 import axios from 'axios';
 
 //get all yaps
@@ -40,9 +40,7 @@ export const postYap = (newYap) => (dispatch) => {
             type: POST_YAP,
             payload: res.data
         });
-        dispatch({
-            type: CLEAR_ERRORS
-        })
+        dispatch(clearErrors())
     })
     .catch(err=> {
         dispatch({
@@ -87,6 +85,23 @@ export const deleteYap = (yapId) => (dispatch) => {
     })
     .catch(err=>console.log(err))
 }
+//submit comment
+export const submitComment = (yapId, commentData) => dispatch => (
+    axios.post(`/yap/${yapId}/comment`, commentData)
+    .then(res => {
+        dispatch({
+            type: SUBMIT_COMMENT,
+            payload: res.data
+        });
+        dispatch(clearErrors()); //action creator
+    })
+    .catch(err => {
+        dispatch({
+            type: SET_ERRORS,
+            payload: err.response.data
+        })
+    })
+)
 
 export const clearErrors = () => (dispatch) => {
     dispatch({ type: CLEAR_ERRORS })

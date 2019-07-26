@@ -1,4 +1,4 @@
-import { SET_YAPS, SET_YAP, POST_YAP, LIKE_YAP, UNLIKE_YAP, LOADING_DATA, DELETE_YAP } from '../types';
+import { SET_YAPS, SET_YAP, POST_YAP, LIKE_YAP, UNLIKE_YAP, SUBMIT_COMMENT, LOADING_DATA, DELETE_YAP } from '../types';
 
 const initialState = {
     yaps: [],
@@ -47,6 +47,14 @@ export default function(state = initialState, action) {
             state.yaps.splice(delIndex,1);
             return {
                 ...state
+            }
+        case SUBMIT_COMMENT:
+            return  {
+                ...state,
+                yap: {
+                    ...state.yap,
+                    comments: [ action.payload, ...state.yap.comments] //adding the new comment to the top of the array
+                }
             }
         default:
             return state

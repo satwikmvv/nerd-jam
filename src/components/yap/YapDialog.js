@@ -4,7 +4,9 @@ import MyButton from '../../util/MyButton';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
 import Comments from './Comments';
+import CommentForm from './CommentForm';
 import LikeButton from './LikeButton';
+
 
 //MUI
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -22,7 +24,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 //Redux
 import { connect } from 'react-redux';
-import { getYap } from '../../redux/actions/dataActions';
+import { getYap, clearErrors } from '../../redux/actions/dataActions';
 
 
 
@@ -39,7 +41,8 @@ class YapDialog extends Component {
         this.props.getYap(this.props.yapId);
     }
     handleClose = () => {
-        this.setState({ open: false })
+        this.setState({ open: false });
+        this.props.clearErrors();
     }
 
     render() {
@@ -78,6 +81,7 @@ class YapDialog extends Component {
                     <span>{commentCount} Comments</span>
                 </Grid>
                 <hr className={classes.visibleSeparator} />
+                <CommentForm yapId={yapId} />
                 <Comments comments={comments} />
             </Grid>
         )
@@ -105,6 +109,7 @@ class YapDialog extends Component {
 
 YapDialog.propTypes = {
     getYap: PropTypes.func.isRequired,
+    clearErrors: PropTypes.func.isRequired,
     yapId: PropTypes.string.isRequired,
     userHandle: PropTypes.string.isRequired,
     yap: PropTypes.object.isRequired,
@@ -117,7 +122,8 @@ const mapStateToProps = state => ({
 })
 
 const mapActionsToProps ={ 
-    getYap
+    getYap,
+    clearErrors
 }
 
 export default connect(mapStateToProps, mapActionsToProps)(withStyles(styles)(YapDialog))
