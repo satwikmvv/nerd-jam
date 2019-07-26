@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import Yap from '../components/Yap';
-import Profile from '../components/Profile';
+import Yap from '../components/yap/Yap';
+import Profile from '../components/profile/Profile';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';

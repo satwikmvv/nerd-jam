@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 
 //MUI
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -16,7 +16,7 @@ import AddIcon from '@material-ui/icons/Add'
 import CloseIcon from '@material-ui/icons/Close'
 //REDUX
 import { connect } from 'react-redux';
-import { postYap, clearErrors } from '../redux/actions/dataActions';
+import { postYap, clearErrors } from '../../redux/actions/dataActions';
 
 const styles = (theme) => ({
     submitButton:{

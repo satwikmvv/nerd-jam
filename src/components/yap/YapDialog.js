@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
-import MyButton from '../util/MyButton';
+import MyButton from '../../util/MyButton';
 import dayjs from 'dayjs';
 import { Link } from 'react-router-dom';
+import Comments from './Comments';
+import LikeButton from './LikeButton';
 
 //MUI
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -11,7 +13,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import CircularProgress from '@material-ui/core/CircularProgress'
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
-import LikeButton from './LikeButton';
+
 
 //ICONS
 import CloseIcon from '@material-ui/icons/Close'
@@ -20,7 +22,7 @@ import ChatIcon from '@material-ui/icons/Chat';
 
 //Redux
 import { connect } from 'react-redux';
-import { getYap } from '../redux/actions/dataActions';
+import { getYap } from '../../redux/actions/dataActions';
 
 
 
@@ -41,7 +43,7 @@ class YapDialog extends Component {
     }
 
     render() {
-        const { classes, yap: { yapId, body, createdAt, likeCount, commentCount, userImage, userHandle }, UI: { loading }} = this.props;
+        const { classes, yap: { yapId, body, createdAt, likeCount, commentCount, userImage, userHandle, comments }, UI: { loading }} = this.props;
         
         const dialogMarkup = loading ? (
             <div className={classes.spinnerDiv}>
@@ -75,6 +77,8 @@ class YapDialog extends Component {
                     </MyButton>
                     <span>{commentCount} Comments</span>
                 </Grid>
+                <hr className={classes.visibleSeparator} />
+                <Comments comments={comments} />
             </Grid>
         )
 
