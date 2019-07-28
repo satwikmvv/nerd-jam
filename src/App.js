@@ -29,7 +29,6 @@ const theme = createMuiTheme(themeFile);
 const token = localStorage.FBIdToken;
 if (token){
   const decodedToken = jwtDecode(token);
-  console.log(decodedToken)
   if (decodedToken.exp * 1000 < Date.now()) {
     store.dispatch(logoutUser());
     window.location.href = '/login';
@@ -55,6 +54,7 @@ class App extends Component {
                   <AuthRoute path="/login" component={login} />
                   <AuthRoute path="/signup" component={signup} />
                   <Route exact path="/users/:handle" component={user}/>
+                  <Route exact path="/users/:handle/yap/:yapId" component={user} />
                 </Switch>
               </div>
             </Router>

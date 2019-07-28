@@ -57,7 +57,7 @@ export class Yap extends Component {
                         <ChatIcon color="primary"/>
                     </MyButton>
                     <span>{commentCount} Comments</span>
-                    <YapDialog yapId={yapId} userHandle={userHandle}/>
+                    <YapDialog yapId={yapId} userHandle={userHandle} openDialog={this.props.openDialog}/>
                 </CardContent>
             </Card>
         )
@@ -67,8 +67,8 @@ export class Yap extends Component {
 Yap.propTypes = {
     user: PropTypes.object.isRequired,
     yap: PropTypes.object.isRequired,
-    classes: PropTypes.object.isRequired
-
+    classes: PropTypes.object.isRequired,
+    openDialog: PropTypes.bool
 }
 
 const mapStateToProps = state => ({

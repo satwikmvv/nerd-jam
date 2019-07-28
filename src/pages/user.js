@@ -16,11 +16,16 @@ import { getUserData } from '../redux/actions/dataActions';
 export class user extends Component {
 
     state = {
-        profile: null
+        profile: null,
+        yapIdParam: null
     }
 
     componentDidMount(){
         const handle = this.props.match.params.handle; //fetching from route url
+        const yapId = this.props.match.params.yapId;
+
+        if(yapId) this.setState({ yapIdParam: yapId });
+
         this.props.getUserData(handle);
         axios.get(`/user/${handle}`)
         .then(res => {
@@ -33,14 +38,20 @@ export class user extends Component {
 
     render() {
         const { yaps, loading } = this.props.data;
+        const { yapIdParam } = this.state;
 
         const yapsMarkup = loading ? (
             <p>Loading ...</p>
         ) : (yaps == null ? (
             <p>This user hasn't yapped yet</p>
-        ) : (
+        ) : (!yapIdParam ? (
             yaps.map(yap => <Yap key={yap.yapId} yap={yap}/>)
-        ))
+        ): (
+            yaps.map(yap => {
+                if(yap.yapId !== yapIdParam) return <Yap key={yap.yapId} yap={yap}/>
+                else return <Yap key={yap.yapId} yap={yap} openDialog/>
+            })
+        )))
 
         return (
             <Grid container justify="center" spacing={2}>
