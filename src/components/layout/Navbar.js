@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import MyButton from '../../util/MyButton';
 import PostYap from '../yap/PostYap';
-
+import Notifications from './Notifications';
 //Redux
 import { connect } from 'react-redux';
 
@@ -14,7 +14,6 @@ import Button from '@material-ui/core/Button';
 
 //ICONS
 import HomeIcon from '@material-ui/icons/Home';
-import Notifications from '@material-ui/icons/Notifications';
 
 
 
@@ -32,9 +31,7 @@ export class Navbar extends Component {
                                     <HomeIcon color="secondary" />
                                 </MyButton>
                             </Link>
-                            <MyButton tip="Notifications">
-                                <Notifications color="secondary" />
-                            </MyButton>
+                            <Notifications color="secondary" />
                         </Fragment>
                     ) : (
                         <Fragment>

@@ -1,4 +1,4 @@
-import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, LOADING_USER, LIKE_YAP, UNLIKE_YAP } from '../types';
+import { SET_USER, SET_AUTHENTICATED, SET_UNAUTHENTICATED, MARK_NOTIFICATIONS_READ, LOADING_USER, LIKE_YAP, UNLIKE_YAP } from '../types';
 
 const initialState = {
     authenticated: false,
@@ -43,6 +43,11 @@ export default function(state = initialState, action){
             return {
                 ...state,
                 loading: true
+            }
+        case MARK_NOTIFICATIONS_READ:
+            state.notifications.forEach((notification) => (notification.read = true))
+            return {
+                ...state
             }
         default:
             return state;
