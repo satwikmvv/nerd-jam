@@ -77,13 +77,15 @@ class Notifications extends Component {
                 )
 
                 return (
-                    <MenuItem key={nt.createdAt} onClick={this.handleClose}>
+                    <MenuItem 
+                        component={Link}
+                        to={`/users/${nt.recipient}/yap/${nt.yapId}`}
+                        key={nt.createdAt} onClick={this.handleClose}
+                    >
                         {icon}
                         <Typography
-                            component={Link}
                             color="primary"
                             variant="body1"
-                            to={`/users/${nt.recipient}/yap/${nt.yapId}`}
                         >
                             {nt.sender} {verbiage} your yap {time}
                         </Typography>

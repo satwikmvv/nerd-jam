@@ -19,6 +19,51 @@ export default {
       useNextVariants: true
     },
     customStyles: {
+      //Profile Skeleton
+      handleProfileSkeleton: {
+        width:60,
+        height:18,
+        backgroundColor: customPalette.primary.main,
+        margin: ' 0 auto 7px auto'
+      },
+      //Yap Skeleton
+      cardSkeleton: {
+        display: 'flex',
+        marginBottom:20
+      },
+      cardContentSkeleton: {
+        width: '100%',
+        flexDirection: 'column',
+        padding: 25
+      },
+      coverSkeleton: {
+        minWidth:200,
+        objectFit: 'cover'
+      },
+      handleSkeleton: {
+        width:60,
+        height:18,
+        backgroundColor: customPalette.primary.main,
+        marginBottom: 7
+      },
+      dateSkeleton: {
+        height:14,
+        width:100,
+        marginBottom: 10,
+        backgroundColor: 'rgba(0,0,0, 0.3)'
+      },
+      fullLineSkeleton:{
+        height: 15,
+        width: '90%',
+        marginBottom: 10,
+        backgroundColor: 'rgba(0,0,0, 0.5)'
+      },
+      halfLineSkeleton: {
+        height: 15,
+        width: '45%',
+        marginBottom: 10,
+        backgroundColor: 'rgba(0,0,0, 0.5)'
+      },
       //Yap Dialog
       invisibleSeparator : {
         border: 'none',

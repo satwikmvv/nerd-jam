@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Yap from '../components/yap/Yap';
+import YapSkeleton from '../util/YapSkeleton';
 import Profile from '../components/profile/Profile';
 import PropTypes from 'prop-types';
 
@@ -15,7 +16,9 @@ export class home extends Component {
         const { yaps, loading } = this.props.data;
         let recentYapMarkup = !loading ? (
             yaps.map(yap => <Yap key={yap.yapId} yap={yap} />)
-        ) : <p>Loading...</p>
+        ) : (
+            <YapSkeleton />
+        )
         return (
             <Grid container justify="center" spacing={2}>
                 <Grid item sm={8} xs={12}>

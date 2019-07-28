@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import dayjs from 'dayjs';
 import EditDetails from './EditDetails';
 import MyButton from '../../util/MyButton';
+import ProfileSkeleton from '../../util/ProfileSkeleton';
 
 //MUI
 import withStyles from '@material-ui/core/styles/withStyles';
@@ -52,10 +53,10 @@ class Profile extends Component {
             loading,
             authenticated
         }} = this.props;
-        let profileMarkup = loading ? (<p>loading...</p>) : (authenticated ? (
+        let profileMarkup = loading ? (<ProfileSkeleton/>) : (authenticated ? (
             <Paper className={classes.paper}>
                 <div className={classes.profile}>
-                    <div className="image-wrapper ">
+                    <div className="image-wrapper">
                         <img src={imageUrl} alt="profile" className="profile-image"/>
                         <input type="file" id="imageInput" hidden="hidden" onChange={this.handleImageChange} />
                         

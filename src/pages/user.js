@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import Yap from '../components/yap/Yap';
+import YapSkeleton from '../util/YapSkeleton';
+import ProfileSkeleton from '../util/ProfileSkeleton';
 import StaticProfile from '../components/profile/StaticProfile';
 
 //MUI
@@ -41,7 +43,7 @@ export class user extends Component {
         const { yapIdParam } = this.state;
 
         const yapsMarkup = loading ? (
-            <p>Loading ...</p>
+            <YapSkeleton />
         ) : (yaps == null ? (
             <p>This user hasn't yapped yet</p>
         ) : (!yapIdParam ? (
@@ -60,7 +62,7 @@ export class user extends Component {
                 </Grid>
                 <Grid item sm={4} xs={12}>
                     {this.state.profile === null ? (
-                        <p>Loading ...</p>
+                        <ProfileSkeleton />
                     ) : (
                         <StaticProfile profile={this.state.profile} />
                     )}
