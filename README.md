@@ -1,7 +1,7 @@
 
 ### NERDJAM
 
-Clone and run ### `npm start`.
+Clone and run `npm start`.
 
 Used firebase for the database and functions
 
